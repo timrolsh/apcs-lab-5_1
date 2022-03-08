@@ -57,7 +57,7 @@ abstract class GasPoweredCar extends Car {
             throw new IllegalArgumentException(String.format("Miles %d must be at least 0. ", miles));
         }
         if (!canDrive(miles)) {
-            throw new IllegalAccessError(
+            throw new IllegalArgumentException(
                     String.format("Cannot drive %d miles, max you can drive with your fuel is %.1f miles", miles,
                             getRemainingRange()));
         }

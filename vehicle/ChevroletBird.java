@@ -1,5 +1,5 @@
 package vehicle;
-class ChevroletBird extends ElectricCar {
+class ChevroletBird extends ElectricCar implements Flying {
     /**
      * Chevrolet Birds have a 250 mile range on a full charge. They start with their
      * wings retracted.

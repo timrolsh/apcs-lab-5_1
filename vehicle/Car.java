@@ -2,18 +2,27 @@ package vehicle;
 import java.util.List;
 
 abstract class Car {
+    private String make;
+    private String model;
+    private double mileage;
+
+
     /**
      * Creates a car with a starting mileage on the odometer.
      * 
      * @throws IllegalArgumentException if startingMileage is negative
      */
     public Car(String make, String model, double startingMileage) {
-
+        this.make = make;
+        this.model = model;
+        this.mileage = startingMileage;
     }
 
     /** Starting mileage is 0. */
     public Car(String make, String model) {
-
+        this.make = make;
+        this.model = model;
+        this.mileage = 0;
     }
 
     /**
@@ -23,6 +32,7 @@ abstract class Car {
      * @throws IllegalArgumentException if miles is negative.
      */
     public boolean canDrive(double miles) {
+        //TODO
 
     }
 
@@ -41,21 +51,25 @@ abstract class Car {
      * ".0" should still display.
      */
     public String toString() {
+        return String.format("%s %s (%.1f mi)", getMake(), getModel(), getMileage());
 
     }
 
     /** Returns how many miles have been driven so far (odometer). */
     public double getMileage() {
+        return this.mileage;
 
     }
 
     /** Returns the make of the car. */
     public String getMake() {
+        return this.make;
 
     }
 
     /** Returns the model of the car. */
     public String getModel() {
+        return this.model;
 
     }
 
@@ -71,6 +85,7 @@ abstract class Car {
      * @throws IllegalArgumentException if miles is negative.
      */
     protected void addMileage(double miles) {
+        this.mileage += miles;
 
     }
 
@@ -83,6 +98,7 @@ abstract class Car {
      *                                  attempted days.
      */
     public int roadTrip(List<Double> milesEachDay) {
+        //TODO
 
     }
 }

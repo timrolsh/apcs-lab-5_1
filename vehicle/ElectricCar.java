@@ -47,7 +47,7 @@ abstract class ElectricCar extends Car {
         } else if (!canDrive(miles)) {
 
             throw new IllegalArgumentException(
-                    String.format("cannot go %.1f miles, max you can go with current charge is %.1f miles", miles,
+                    String.format("cannot drive %.1f miles, max you can go with current charge is %.1f miles", miles,
                             getRemainingRange()));
         }
         super.addMileage(miles);

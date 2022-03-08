@@ -49,7 +49,15 @@ class ChevroletBird extends ElectricCar implements Flying {
 
     @Override
     public void fly(double miles) {
+        if (miles <= 0) {
+            throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
+        } else if (!canDrive(miles)) {
+
+            throw new IllegalArgumentException(
+                    String.format("cannot fly %.1f miles, max you can go with current charge is %.1f miles", miles,
+                            getRemainingRange()));
+        }
         wingsExtended = true;
-        super.drive(miles);
+        decreaseCharge(miles);
     }
 }

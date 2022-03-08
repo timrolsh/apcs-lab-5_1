@@ -1,15 +1,14 @@
 package vehicle;
+
 class ChevroletBird extends ElectricCar implements Flying {
     private boolean wingsExtended;
+
     /**
      * Chevrolet Birds have a 250 mile range on a full charge. They start with their
      * wings retracted.
      */
     public ChevroletBird(double startingMileage) {
         super("Chevrolet", "Bird", startingMileage, 250);
-        if(startingMileage<0||startingMileage>250){
-            throw new IllegalArgumentException();
-        }
         wingsExtended = false;
     }
 
@@ -30,8 +29,27 @@ class ChevroletBird extends ElectricCar implements Flying {
      * Coding tip: Write this method to re-use the behavior of the superclass drive.
      * Don’t copy-and-paste the same code here.
      */
+    @Override
     public void drive(double miles) {
         wingsExtended = false;
+        super.drive(miles);
     }
 
+    /**
+     * returns true if wings are retracted and the car has enough charge to go that
+     * amount of miles
+     */
+    @Override
+    public boolean canFly(double miles) {
+        if (miles < 0) {
+            throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
+        }
+        return !wingsExtended && canDrive(miles);
+    }
+
+    @Override
+    public void fly(double miles) {
+        wingsExtended = true;
+        super.drive(miles);
+    }
 }

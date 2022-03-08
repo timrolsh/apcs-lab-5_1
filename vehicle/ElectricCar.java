@@ -1,3 +1,4 @@
+package vehicle;
 abstract class ElectricCar extends Car {
     /**
      * Note: Car begins with a full charge (and thus range).

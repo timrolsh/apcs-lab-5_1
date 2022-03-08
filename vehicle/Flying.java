@@ -1,3 +1,4 @@
+package vehicle;
 interface Flying {
     /** @throws IllegalArgumentException if miles is negative. */
     public boolean canFly(double miles);

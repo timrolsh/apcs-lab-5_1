@@ -1,4 +1,5 @@
-class TeslaModelZ extends ElectricCar {
+package vehicle;
+class TeslaModelZ extends ElectricCar implements SelfDriving{
     /**
      * modelNum specifies the model number. Tesla cares about that stuff. Tesla
      * Model Z’s have a 340 mile range on a full charge.

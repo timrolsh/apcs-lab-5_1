@@ -32,7 +32,7 @@ abstract class Car {
      * @throws IllegalArgumentException if miles is negative.
      */
     public boolean canDrive(double miles) {
-        //TODO
+       return this.getRemainingRange() >= miles;
 
     }
 

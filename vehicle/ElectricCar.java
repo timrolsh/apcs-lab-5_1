@@ -1,16 +1,22 @@
 package vehicle;
+
 abstract class ElectricCar extends Car {
-    private double milesOnMaxCharge;
-    private double range;
+    protected double maxRange;
+    protected double range;
+
     /**
      * Note: Car begins with a full charge (and thus range).
      * 
      * @throws IllegalArgumentException if milesOnMaxCharge is nonpositive.
      */
-    public ElectricCar(String make, String model, double startingMileage, double milesOnMaxCharge) {
+    protected ElectricCar(String make, String model, double startingMileage, double milesOnMaxCharge) {
         super(make, model, startingMileage);
-        this.milesOnMaxCharge = milesOnMaxCharge;
-        this.range = milesOnMaxCharge; 
+        if (milesOnMaxCharge <= 0) {
+            throw new IllegalArgumentException(
+                    String.format("Miles on max charge %.1f must be greater than 0.", milesOnMaxCharge));
+        }
+        this.maxRange = milesOnMaxCharge;
+        this.range = milesOnMaxCharge;
     }
 
     /**
@@ -18,9 +24,14 @@ abstract class ElectricCar extends Car {
      * 
      * @throws IllegalArgumentException if milesOnMaxCharge is nonpositive.
      */
-    public ElectricCar(String make, String model, double milesOnMaxCharge) {
-        super(make, model, 0);
-        this.milesOnMaxCharge = milesOnMaxCharge;
+    protected ElectricCar(String make, String model, double milesOnMaxCharge) {
+        super(make, model);
+        if (milesOnMaxCharge <= 0) {
+            throw new IllegalArgumentException(
+                    String.format("Miles on max charge %.1f must be greater than 0.", milesOnMaxCharge));
+        }
+        this.maxRange = milesOnMaxCharge;
+        this.range = milesOnMaxCharge;
     }
 
     /**
@@ -31,6 +42,14 @@ abstract class ElectricCar extends Car {
      *                                  charge.
      */
     public void drive(double miles) {
+        if (miles <= 0) {
+            throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
+        } else if (!canDrive(miles)) {
+
+            throw new IllegalArgumentException(
+                    String.format("cannot go %.1f miles, max you can go with current charge is %.1f miles", miles,
+                            getRemainingRange()));
+        }
         super.addMileage(miles);
         decreaseCharge(miles);
     }
@@ -38,18 +57,17 @@ abstract class ElectricCar extends Car {
     /** Returns how many more miles the car can currently go without recharging. */
     public double getRemainingRange() {
         return range;
-
     }
 
     /** Returns how many miles the car could go on a full charge. */
     public double getMaxRange() {
-        return milesOnMaxCharge;
+        return maxRange;
 
     }
 
     /** Recharges the car to max range capability. */
     public void recharge() {
-        range = milesOnMaxCharge;
+        range = maxRange;
     }
 
     /**
@@ -59,5 +77,4 @@ abstract class ElectricCar extends Car {
     protected void decreaseCharge(double miles) {
         range -= miles;
     }
-
 }

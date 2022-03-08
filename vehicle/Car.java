@@ -1,25 +1,25 @@
 package vehicle;
+
 import java.util.List;
 
 abstract class Car {
-    private String make;
-    private String model;
-    private double mileage;
-
+    protected String make;
+    protected String model;
+    protected double mileage;
 
     /**
      * Creates a car with a starting mileage on the odometer.
      * 
      * @throws IllegalArgumentException if startingMileage is negative
      */
-    public Car(String make, String model, double startingMileage) {
+    protected Car(String make, String model, double startingMileage) {
         this.make = make;
         this.model = model;
         this.mileage = startingMileage;
     }
 
     /** Starting mileage is 0. */
-    public Car(String make, String model) {
+    protected Car(String make, String model) {
         this.make = make;
         this.model = model;
         this.mileage = 0;
@@ -32,7 +32,7 @@ abstract class Car {
      * @throws IllegalArgumentException if miles is negative.
      */
     public boolean canDrive(double miles) {
-       return this.getRemainingRange() >= miles;
+        return this.getRemainingRange() >= miles;
 
     }
 
@@ -98,7 +98,17 @@ abstract class Car {
      *                                  attempted days.
      */
     public int roadTrip(List<Double> milesEachDay) {
-        //TODO
-
+        // check for no negative distances
+        for (int i = 0; i < milesEachDay.size(); ++i) {
+            if (milesEachDay.get(i) < 0) {
+                throw new IllegalArgumentException(
+                        String.format("Mile at index %d(%d) must be at least 0. ", i, milesEachDay.get(i)));
+            }
+        }
+        int i = 0;
+        while (canDrive(milesEachDay.get(i))) {
+            drive(milesEachDay.get(i++));
+        }
+        return i;
     }
 }

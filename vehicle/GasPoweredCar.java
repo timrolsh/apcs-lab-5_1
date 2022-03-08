@@ -1,3 +1,4 @@
+package vehicle;
 abstract class GasPoweredCar extends Car {
     /**
      * Note: Start with a full tank of gas

@@ -1,3 +1,4 @@
+package vehicle;
 class TeslaModelZ extends ElectricCar {
     /**
      * modelNum specifies the model number. Tesla cares about that stuff. Tesla

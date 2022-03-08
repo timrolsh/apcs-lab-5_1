@@ -1,3 +1,4 @@
+package vehicle;
 class ChevroletBird extends ElectricCar {
     /**
      * Chevrolet Birds have a 250 mile range on a full charge. They start with their

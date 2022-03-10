@@ -91,7 +91,7 @@ public abstract class GasPoweredCar extends Car {
 
     /** Returns how many more miles the car can currently go without refueling. */
     public double getRemainingRange() {
-        return this.fuelLevel * this.mpg;
+        return Double.parseDouble(String.format("%.1f", this.fuelLevel * this.mpg));
     }
 
     /**

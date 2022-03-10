@@ -13,6 +13,9 @@ public abstract class Car {
      * @throws IllegalArgumentException if startingMileage is negative
      */
     protected Car(String make, String model, double startingMileage) {
+        if (startingMileage < 0) {
+            throw new IllegalArgumentException(String.format("Starting mileage %.1f must be at least 0.", startingMileage));
+        }
         this.make = make;
         this.model = model;
         this.mileage = startingMileage;

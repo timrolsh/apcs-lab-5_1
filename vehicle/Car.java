@@ -32,6 +32,9 @@ abstract class Car {
      * @throws IllegalArgumentException if miles is negative.
      */
     public boolean canDrive(double miles) {
+        if (miles < 0) {
+            throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
+        }
         return this.getRemainingRange() >= miles;
 
     }
@@ -85,8 +88,10 @@ abstract class Car {
      * @throws IllegalArgumentException if miles is negative.
      */
     protected void addMileage(double miles) {
+        if (miles < 0) {
+            throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
+        }
         this.mileage += miles;
-
     }
 
     /**

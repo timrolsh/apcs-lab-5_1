@@ -73,8 +73,19 @@ abstract class ElectricCar extends Car {
     /**
      * Decreases the amount of energy in the battery based by the number of miles
      * passed as an argument.
+     * 
+     * @throws IllegalArgumentException if miles is negative or removing this many
+     *                                  miles results in a negative battery capacity
+     * 
      */
     protected void decreaseCharge(double miles) {
+        if (miles <= 0) {
+            throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
+        } else if (miles > getRemainingRange()) {
+            throw new IllegalArgumentException(String.format(
+                    "Cannot remove %.1f miles from the charge while the capacity is at %.1f.", miles,
+                    getRemainingRange()));
+        }
         range -= miles;
     }
 }

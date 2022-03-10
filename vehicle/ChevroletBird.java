@@ -1,7 +1,7 @@
 package vehicle;
 
 class ChevroletBird extends ElectricCar implements Flying {
-    private boolean wingsExtended;
+    private boolean wingsExtended = false;
 
     /**
      * Chevrolet Birds have a 250 mile range on a full charge. They start with their
@@ -44,7 +44,7 @@ class ChevroletBird extends ElectricCar implements Flying {
         if (miles < 0) {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         }
-        return !wingsExtended && canDrive(miles);
+        return wingsExtended && canDrive(miles);
     }
 
     @Override

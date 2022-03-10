@@ -1,8 +1,8 @@
 package vehicle;
 
-abstract class ElectricCar extends Car {
-    protected double maxRange;
-    protected double range;
+public abstract class ElectricCar extends Car {
+    private double maxRange;
+    private double range;
 
     /**
      * Note: Car begins with a full charge (and thus range).

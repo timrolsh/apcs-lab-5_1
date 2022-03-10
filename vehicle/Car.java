@@ -2,10 +2,10 @@ package vehicle;
 
 import java.util.List;
 
-abstract class Car {
-    protected String make;
-    protected String model;
-    protected double mileage;
+public abstract class Car {
+    private String make;
+    private String model;
+    private double mileage;
 
     /**
      * Creates a car with a starting mileage on the odometer.

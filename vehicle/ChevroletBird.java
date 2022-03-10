@@ -1,6 +1,6 @@
 package vehicle;
 
-class ChevroletBird extends ElectricCar implements Flying {
+public class ChevroletBird extends ElectricCar implements Flying {
     private boolean wingsExtended = false;
 
     /**

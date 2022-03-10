@@ -1,6 +1,6 @@
 package vehicle;
 
-class TeslaModelZ extends ElectricCar implements SelfDriving {
+public class TeslaModelZ extends ElectricCar implements SelfDriving {
     protected int modelNum;
 
     /**
@@ -32,7 +32,7 @@ class TeslaModelZ extends ElectricCar implements SelfDriving {
      */
     @Override
     public String getModel() {
-        return String.format("%s%d", model, modelNum);
+        return String.format("%s%d", getModel(), modelNum);
     }
 
     /**
@@ -51,8 +51,8 @@ class TeslaModelZ extends ElectricCar implements SelfDriving {
         if (miles <= 0) {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         }
-        if (miles > range) {
-            miles = range;
+        if (miles > getRemainingRange()) {
+            miles = getRemainingRange();
         }
         super.addMileage(miles);
         decreaseCharge(miles);

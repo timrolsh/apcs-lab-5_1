@@ -1,7 +1,7 @@
 package vehicle;
 
-class HondaAccordian extends GasPoweredCar {
-    protected int modelYear;
+public class HondaAccordian extends GasPoweredCar {
+    private int modelYear;
 
     /**
      * modelYear specifies the year this car was made. Honda cares about that stuff.

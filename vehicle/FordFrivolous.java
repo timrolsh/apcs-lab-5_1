@@ -1,6 +1,6 @@
 package vehicle;
 
-class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying {
+public class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying {
     /** FordFrivolous has a gas tank of 20 gallons and an MPG of 23.6. */
     public FordFrivolous(double startingMileage) {
         super("Ford", "Frivolous", startingMileage, 23.6, 20);
@@ -31,9 +31,9 @@ class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying {
         if (!canFly(miles)) {
             throw new IllegalArgumentException(
                     String.format("Cannot fly %d miles, max you can fly with your fuel is %.1f miles", miles,
-                            (getFuelLevel() * (mpg / 3))));
+                            (getFuelLevel() * (getMPG() / 3))));
         }
-        fuelLevel -= (miles / (mpg / 3));
+        decreaseFuelLevel((miles / (getMPG() / 3)));
     }
 
     @Override
@@ -45,6 +45,6 @@ class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying {
             miles = getRemainingRange() / 2;
         }
         addMileage(miles);
-        fuelLevel -= (miles / (mpg / 3));
+        decreaseFuelLevel((miles / (getMPG() / 3)));
     }
 }

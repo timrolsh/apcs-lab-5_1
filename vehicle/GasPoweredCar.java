@@ -1,10 +1,10 @@
 package vehicle;
 
-abstract class GasPoweredCar extends Car {
+public abstract class GasPoweredCar extends Car {
 
-    protected double mpg;
-    protected double fuelCapacity;
-    protected double fuelLevel;
+    private double mpg;
+    private double fuelCapacity;
+    private double fuelLevel;
 
     /**
      * Note: Start with a full tank of gas
@@ -61,7 +61,7 @@ abstract class GasPoweredCar extends Car {
                     String.format("Cannot drive %d miles, max you can drive with your fuel is %.1f miles", miles,
                             getRemainingRange()));
         }
-        mileage += miles;
+        addMileage(miles);
         fuelLevel -= (miles / mpg);
     }
 

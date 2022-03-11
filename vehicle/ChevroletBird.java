@@ -12,13 +12,17 @@ public class ChevroletBird extends ElectricCar implements Flying {
         wingsExtended = false;
     }
 
-    /** Defaults mileage to 0. */
+    /**
+     * Defaults mileage to 0.
+     */
     public ChevroletBird() {
         super("Chevrolet", "Bird", 250);
         wingsExtended = false;
     }
 
-    /** Returns whether the wings are currently extended. */
+    /**
+     * Returns whether the wings are currently extended.
+     */
     public boolean checkWingsExtended() {
         return wingsExtended;
     }
@@ -38,6 +42,7 @@ public class ChevroletBird extends ElectricCar implements Flying {
     /**
      * returns true if wings are retracted and the car has enough charge to go that
      * amount of miles
+     * //TODO ask if this method is doing what its supposed to and if not update testcase 7 in bird driving
      */
     @Override
     public boolean canFly(double miles) {
@@ -49,13 +54,11 @@ public class ChevroletBird extends ElectricCar implements Flying {
 
     @Override
     public void fly(double miles) {
-        if (miles <= 0) {
+        if (miles < 0) {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         } else if (!canDrive(miles)) {
 
-            throw new IllegalArgumentException(
-                    String.format("cannot fly %.1f miles, max you can go with current charge is %.1f miles", miles,
-                            getRemainingRange()));
+            throw new IllegalArgumentException(String.format("cannot fly %.1f miles, max you can go with current charge is %.1f miles", miles, getRemainingRange()));
         }
         wingsExtended = true;
         decreaseCharge(miles);

@@ -1,7 +1,7 @@
 package vehicle;
 
 public class HondaAccordian extends GasPoweredCar {
-    private int modelYear;
+    private final int modelYear;
 
     /**
      * modelYear specifies the year this car was made. Honda cares about that stuff.
@@ -12,7 +12,9 @@ public class HondaAccordian extends GasPoweredCar {
         this.modelYear = modelYear;
     }
 
-    /** Defaults mileage to 0. */
+    /**
+     * Defaults mileage to 0.
+     */
     public HondaAccordian(int year) {
         super("Honda", "Accordian", 33.2, 14.5);
         if (year < 1886) {

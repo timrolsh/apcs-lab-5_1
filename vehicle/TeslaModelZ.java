@@ -14,13 +14,17 @@ public class TeslaModelZ extends ElectricCar implements SelfDriving {
         this.modelNum = modelNumber;
     }
 
-    /** Defaults mileage to 0. */
+    /**
+     * Defaults mileage to 0.
+     */
     public TeslaModelZ(int modelNumber) {
         super("Tesla", "Z", 340);
         this.modelNum = modelNumber;
     }
 
-    /** Returns the model number. */
+    /**
+     * Returns the model number.
+     */
     public int getModelNum() {
         return modelNum;
 
@@ -32,7 +36,7 @@ public class TeslaModelZ extends ElectricCar implements SelfDriving {
      */
     @Override
     public String getModel() {
-        return String.format("%s%d", getModel(), modelNum);
+        return String.format("%s%d", super.getModel(), modelNum);
     }
 
     /**

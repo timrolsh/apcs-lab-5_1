@@ -3,13 +3,13 @@ package vehicle;
 import java.util.List;
 
 public abstract class Car {
-    private String make;
-    private String model;
+    private final String make;
+    private final String model;
     private double mileage;
 
     /**
      * Creates a car with a starting mileage on the odometer.
-     * 
+     *
      * @throws IllegalArgumentException if startingMileage is negative
      */
     protected Car(String make, String model, double startingMileage) {
@@ -21,7 +21,9 @@ public abstract class Car {
         this.mileage = startingMileage;
     }
 
-    /** Starting mileage is 0. */
+    /**
+     * Starting mileage is 0.
+     */
     protected Car(String make, String model) {
         this.make = make;
         this.model = model;
@@ -31,7 +33,7 @@ public abstract class Car {
     /**
      * If able to drive the full given number of miles, returns true. If not,
      * returns false.
-     * 
+     *
      * @throws IllegalArgumentException if miles is negative.
      */
     public boolean canDrive(double miles) {
@@ -44,7 +46,7 @@ public abstract class Car {
 
     /**
      * Drives the full given number of miles.
-     * 
+     *
      * @throws IllegalArgumentException if miles is negative or if miles is too high
      *                                  given the current fuel.
      */
@@ -61,19 +63,25 @@ public abstract class Car {
 
     }
 
-    /** Returns how many miles have been driven so far (odometer). */
+    /**
+     * Returns how many miles have been driven so far (odometer).
+     */
     public double getMileage() {
         return this.mileage;
 
     }
 
-    /** Returns the make of the car. */
+    /**
+     * Returns the make of the car.
+     */
     public String getMake() {
         return this.make;
 
     }
 
-    /** Returns the model of the car. */
+    /**
+     * Returns the model of the car.
+     */
     public String getModel() {
         return this.model;
 
@@ -87,7 +95,7 @@ public abstract class Car {
 
     /**
      * Adds mileage to the odometer.
-     * 
+     *
      * @throws IllegalArgumentException if miles is negative.
      */
     protected void addMileage(double miles) {
@@ -101,7 +109,7 @@ public abstract class Car {
      * The car attempts to drive, in order, each of the daily number of miles in the
      * list milesEachDay. Once the car cannot drive one of the day’s distance, no
      * more days are attempted. Returns the number of days successfully driven.
-     * 
+     *
      * @throws IllegalArgumentException if miles is negative for any of the
      *                                  attempted days.
      */
@@ -109,8 +117,7 @@ public abstract class Car {
         // check for no negative distances
         for (int i = 0; i < milesEachDay.size(); ++i) {
             if (milesEachDay.get(i) < 0) {
-                throw new IllegalArgumentException(
-                        String.format("Mile at index %d(%d) must be at least 0. ", i, milesEachDay.get(i)));
+                throw new IllegalArgumentException(String.format("Mile at index %d(%.1f) must be at least 0. ", i, milesEachDay.get(i)));
             }
         }
         int i = 0;

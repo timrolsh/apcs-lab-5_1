@@ -29,7 +29,7 @@ public class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying 
 
     @Override
     public void fly(double miles) {
-        if (miles <= 0) {
+        if (miles < 0) {
             throw new IllegalArgumentException(String.format("Miles %.1f must be at least 0. ", miles));
         }
         if (!canFly(miles)) {
@@ -41,7 +41,7 @@ public class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying 
 
     @Override
     public void driveAutonomously(double miles) {
-        if (miles <= 0) {
+        if (miles < 0) {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         }
         if (miles > getRemainingRange() / 2) {

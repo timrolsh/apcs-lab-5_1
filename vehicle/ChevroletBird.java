@@ -1,7 +1,7 @@
 package vehicle;
 
 public class ChevroletBird extends ElectricCar implements Flying {
-    private boolean wingsExtended = false;
+    private boolean wingsExtended;
 
     /**
      * Chevrolet Birds have a 250 mile range on a full charge. They start with their
@@ -58,7 +58,8 @@ public class ChevroletBird extends ElectricCar implements Flying {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         } else if (!canDrive(miles)) {
 
-            throw new IllegalArgumentException(String.format("cannot fly %.1f miles, max you can go with current charge is %.1f miles", miles, getRemainingRange()));
+            throw new IllegalArgumentException(String.format("cannot fly %.1f miles, max you can go with current " +
+                    "charge is %.1f miles", miles, getRemainingRange()));
         }
         wingsExtended = true;
         decreaseCharge(miles);

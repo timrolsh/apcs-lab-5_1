@@ -18,7 +18,8 @@ public class HondaAccordian extends GasPoweredCar {
     public HondaAccordian(int year) {
         super("Honda", "Accordian", 33.2, 14.5);
         if (year < 1886) {
-            throw new IllegalArgumentException(String.format("Year %d must be at least 1886, since that is when cars where invented!", year));
+            throw new IllegalArgumentException(String.format("Year %d must be at least 1886, since that is when " +
+                    "cars where invented!", year));
         }
         this.modelYear = year;
     }

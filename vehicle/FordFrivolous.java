@@ -36,7 +36,7 @@ public class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying 
             throw new IllegalArgumentException(String.format("Cannot fly %.1f miles, max you can fly with your fuel " +
                     "is %.1f miles", miles, (getFuelLevel() * (getMPG() / 3))));
         }
-        decreaseFuelLevel((miles / (getMPG() / 3)));
+        decreaseFuelLevel((miles *2));
     }
 
     @Override
@@ -48,6 +48,6 @@ public class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying 
             miles = getRemainingRange() / 2;
         }
         addMileage(miles);
-        decreaseFuelLevel((miles / (getMPG() / 3)));
+        decreaseFuelLevel((miles * 2));
     }
 }

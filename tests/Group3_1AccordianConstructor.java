@@ -1,16 +1,20 @@
 package tests;
 
-import vehicle.HondaAccordian;
 import bcatest.BCATestScenario;
+import vehicle.HondaAccordian;
 
-public class group3_1AccordianConstructor extends BCATestScenario {
+public class Group3_1AccordianConstructor extends BCATestScenario {
 
 
     public int runTest() {
 
-        assertThrows(IllegalArgumentException.class, () -> {HondaAccordian h = new HondaAccordian(1885);}, "Year must be at least 1886");
+        assertThrows(IllegalArgumentException.class, () -> {
+            HondaAccordian h = new HondaAccordian(1885);
+        }, "Year must be at least 1886");
 
-        assertThrows(IllegalArgumentException.class, () -> {HondaAccordian h = new HondaAccordian(-1.0, 1999);}, "Can't have a negative starting mileage");
+        assertThrows(IllegalArgumentException.class, () -> {
+            HondaAccordian h = new HondaAccordian(-1.0, 1999);
+        }, "Can't have a negative starting mileage");
 
         HondaAccordian c1 = new HondaAccordian(0, 2000);
         assertEquals(c1.getMileage(), 0, .1, "Mileage should be zero");

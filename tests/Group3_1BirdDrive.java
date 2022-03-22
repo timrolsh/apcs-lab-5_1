@@ -21,7 +21,9 @@ public class Group3_1BirdDrive extends BCATestScenario {
 
         assertEquals(c1.getRemainingRange(), 220, .1, "Remaining range should be 220.");
 
-        assertThrows(IllegalArgumentException.class, () -> c1.canDrive(252), "Goes over max range.");
+        assertFalse(c1.canDrive(251), "Goes over max range.");
+
+        assertThrows(IllegalArgumentException.class, ()-> c1.drive(251), "Goes over the max range");
 
         assertFalse(c1.canFly(1), "Flying should fail, wings are retracted");
         c1.fly(50);

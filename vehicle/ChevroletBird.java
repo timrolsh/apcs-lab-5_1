@@ -36,6 +36,9 @@ public class ChevroletBird extends ElectricCar implements Flying {
     @Override
     public void drive(double miles) {
         wingsExtended = false;
+        if(miles > getRemainingRange()){
+            throw new IllegalArgumentException();
+        }
         super.drive(miles);
     }
 

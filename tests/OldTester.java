@@ -13,7 +13,7 @@ import java.util.List;
  * vehicle.ChevroletBird
  * Written by Tim, Sara, Christopher, Krish
  **/
-public class GroupThreeOneTester {
+public class OldTester {
     public static void main(String[] args) {
         testAccordianConstructor();
         testAccordianDrive();

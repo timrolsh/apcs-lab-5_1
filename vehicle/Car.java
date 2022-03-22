@@ -1,6 +1,7 @@
 package vehicle;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Car {
     private final String make;
@@ -114,7 +115,7 @@ public abstract class Car {
      * @throws IllegalArgumentException if miles is negative for any of the
      *                                  attempted days.
      */
-    public int roadTrip(List<Double> milesEachDay) {
+    public int roadTrip(ArrayList<Double> milesEachDay) {
         // check for no negative distances
         for (int i = 0; i < milesEachDay.size(); ++i) {
             if (milesEachDay.get(i) < 0) {

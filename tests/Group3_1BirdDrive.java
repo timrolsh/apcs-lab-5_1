@@ -8,7 +8,7 @@ public class Group3_1BirdDrive extends BCATestScenario {
 
 
     public int runTest() {
-        ChevroletBird c1 = new ChevroletBird(2018);
+        ChevroletBird c1 = new ChevroletBird();
 
         assertThrows(IllegalArgumentException.class, () -> c1.drive(-1), "Driving mileage cannot be " + "negative.");
 

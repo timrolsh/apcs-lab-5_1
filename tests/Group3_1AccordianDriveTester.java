@@ -43,7 +43,7 @@ public class Group3_1AccordianDriveTester extends BCATestScenario{
         double x = h.getMileage();
 
         assertEquals(h.roadTrip(d2), 3, 0.1, "Should return three");
-        assertEquals(h.getMileage(), x+6, 0.1, "Should have traveled three miles");
+        assertEquals(h.getMileage(), x+6, 0.1, "Should have traveled Six miles");
 
         return getFailedCount();
     }

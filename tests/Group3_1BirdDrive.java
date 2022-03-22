@@ -2,6 +2,7 @@ package tests;
 
 import bcatest.BCATestScenario;
 import vehicle.ChevroletBird;
+import java.util.ArrayList;
 
 public class Group3_1BirdDrive extends BCATestScenario {
 
@@ -32,7 +33,30 @@ public class Group3_1BirdDrive extends BCATestScenario {
 
         assertEquals(c1.getRemainingRange(), 170, 0.1, "Your range should be 170"); 
 
-        return getFailedCount(); 
+        ArrayList<Double> d2 = new ArrayList<>();
+        d2.add(1.0);
+        d2.add(2.0);
+        d2.add(3.0);
+        d2.add(99999.0);
+        double x = c1.getMileage();
+
+        assertEquals(c1.roadTrip(d2), 3, 0.1, "Should return three");
+        assertEquals(c1.getMileage(), x+6, 0.1, "Should have traveled Six miles");
+
+        
+        ArrayList<Double> dl = new ArrayList<>();
+        dl.add(1.0);
+        dl.add(2.0);
+        dl.add(3.0);
+        dl.add(4.0);
+        dl.add(5.0);
+        dl.add(-4.0);
+
+        assertThrows(IllegalArgumentException.class, () -> {c1.roadTrip(dl);}, "2 should go beyond maximum of the tank");
+
+        return getFailedCount();
+
 
     }
+
 }

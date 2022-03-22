@@ -28,6 +28,10 @@ public class Group3_1BirdDrive extends BCATestScenario {
         
         assertEquals(c1.getMileage(), 30, 0.1, "Mileage has not changed");
 
+        assertTrue(c1.checkWingsExtended(), "Wings did not extend"); 
+
+        assertEquals(c1.getRemainingRange(), 170, 0.1, "Your range should be 170"); 
+
         return getFailedCount(); 
 
     }

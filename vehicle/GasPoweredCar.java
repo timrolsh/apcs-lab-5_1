@@ -61,7 +61,7 @@ public abstract class GasPoweredCar extends Car {
                     "fuel is %.1f miles", miles, getRemainingRange()));
         }
         addMileage(miles);
-        fuelLevel -= (miles / mpg);
+        decreaseFuelLevel(miles);
     }
 
     /**

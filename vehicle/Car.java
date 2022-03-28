@@ -1,7 +1,7 @@
 package vehicle;
 
 import java.util.ArrayList;
-
+import java.util.List;
 public abstract class Car {
     private final String make;
     private final String model;
@@ -115,6 +115,21 @@ public abstract class Car {
      *                                  attempted days.
      */
     public int roadTrip(ArrayList<Double> milesEachDay) {
+        // check for no negative distances
+        for (int i = 0; i < milesEachDay.size(); ++i) {
+            if (milesEachDay.get(i) < 0) {
+                throw new IllegalArgumentException(String.format("Mile at index %d(%.1f) must be at least 0. ",
+                        i, milesEachDay.get(i)));
+            }
+        }
+        int i = 0;
+        while (canDrive(milesEachDay.get(i))) {
+            drive(milesEachDay.get(i++));
+        }
+        return i;
+    }
+
+    public int roadTrip(List<Double> milesEachDay) {
         // check for no negative distances
         for (int i = 0; i < milesEachDay.size(); ++i) {
             if (milesEachDay.get(i) < 0) {

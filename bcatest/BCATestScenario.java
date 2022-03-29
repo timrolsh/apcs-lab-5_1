@@ -1,6 +1,7 @@
 package bcatest;
 
 public abstract class BCATestScenario {
+    protected final double DELTA = 0.1;
 
     private int failed = 0;
 

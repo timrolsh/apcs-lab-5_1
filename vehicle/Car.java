@@ -116,14 +116,14 @@ public abstract class Car {
      */
     public int roadTrip(ArrayList<Double> milesEachDay) {
         // check for no negative distances
-        for (int i = 0; i < milesEachDay.size(); ++i) {
+        for (int i = 0; i < milesEachDay.size(); i++) {
             if (milesEachDay.get(i) < 0) {
                 throw new IllegalArgumentException(String.format("Mile at index %d(%.1f) must be at least 0. ",
                         i, milesEachDay.get(i)));
             }
         }
         int i = 0;
-        while (canDrive(milesEachDay.get(i))) {
+        while (i<milesEachDay.size()&&canDrive(milesEachDay.get(i))) {
             drive(milesEachDay.get(i++));
         }
         return i;
@@ -131,14 +131,14 @@ public abstract class Car {
 
     public int roadTrip(List<Double> milesEachDay) {
         // check for no negative distances
-        for (int i = 0; i < milesEachDay.size(); ++i) {
+        for (int i = 0; i < milesEachDay.size(); i++) {
             if (milesEachDay.get(i) < 0) {
                 throw new IllegalArgumentException(String.format("Mile at index %d(%.1f) must be at least 0. ",
                         i, milesEachDay.get(i)));
             }
         }
         int i = 0;
-        while (canDrive(milesEachDay.get(i))) {
+        while (i<milesEachDay.size()&&canDrive(milesEachDay.get(i))) {
             drive(milesEachDay.get(i++));
         }
         return i;

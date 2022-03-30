@@ -112,7 +112,7 @@ public abstract class GasPoweredCar extends Car {
     public void refillTank(double gallons) {
         if (this.fuelLevel + gallons > this.fuelCapacity) {
             throw new IllegalArgumentException(String.format("Adding %.1f gallons to the tank while it's fuel level " +
-                    "is %.1f would cause it to overflow (%.1f > %.1f)", gallons, this.fuelLevel,
+                    "is %.1f would cause it to overflow (%f > %f)", gallons, this.fuelLevel,
                     (gallons + this.fuelLevel), this.fuelCapacity));
         } else if (gallons < 0) {
             throw new IllegalArgumentException(String.format("Gallons %.1f must be a positive value.", gallons));

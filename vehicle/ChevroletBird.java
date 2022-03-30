@@ -16,8 +16,8 @@ public class ChevroletBird extends ElectricCar implements Flying {
      * Defaults mileage to 0.
      */
     public ChevroletBird() {
-        super("Chevrolet", "Bird", 250); 
-        wingsExtended = false; 
+        super("Chevrolet", "Bird", 250);
+        wingsExtended = false;
     }
 
     /**
@@ -37,7 +37,7 @@ public class ChevroletBird extends ElectricCar implements Flying {
     public void drive(double miles) {
         wingsExtended = false;
         if (miles > getRemainingRange()) {
-            throw new IllegalArgumentException(); 
+            throw new IllegalArgumentException();
         }
         super.drive(miles);
     }
@@ -61,8 +61,7 @@ public class ChevroletBird extends ElectricCar implements Flying {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         } else if (!canDrive(miles)) {
 
-            throw new IllegalArgumentException(String.format("cannot fly %.1f miles, max you can go with current " +
-                    "charge is %.1f miles", miles, getRemainingRange()));
+            throw new IllegalArgumentException(String.format("cannot fly %.1f miles, max you can go with current " + "charge is %.1f miles", miles, getRemainingRange()));
         }
         wingsExtended = true;
         decreaseCharge(miles);

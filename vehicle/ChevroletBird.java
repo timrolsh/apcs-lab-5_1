@@ -52,7 +52,7 @@ public class ChevroletBird extends ElectricCar implements Flying {
         if (miles < 0) {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         }
-        return wingsExtended && canDrive(miles);
+        return /*wingsExtended &&*/ canDrive(miles);
     }
 
     @Override

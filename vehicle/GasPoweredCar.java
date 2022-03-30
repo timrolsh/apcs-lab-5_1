@@ -17,7 +17,8 @@ public abstract class GasPoweredCar extends Car {
         if (mpg <= 0) {
             throw new IllegalArgumentException(String.format("mpg %.1f has to be greater than 0", mpg));
         } else if (fuelCapacityGallons <= 0) {
-            throw new IllegalArgumentException(String.format("fuel capacity %.1f has to be greater than 0", fuelCapacityGallons));
+            throw new IllegalArgumentException(
+                    String.format("fuel capacity %.1f has to be greater than 0", fuelCapacityGallons));
         }
         this.mpg = mpg;
         this.fuelCapacity = fuelCapacityGallons;
@@ -36,7 +37,8 @@ public abstract class GasPoweredCar extends Car {
         if (mpg <= 0) {
             throw new IllegalArgumentException(String.format("mpg %.1f has to be greater than 0", mpg));
         } else if (fuelCapacityGallons <= 0) {
-            throw new IllegalArgumentException(String.format("fuel capacity %.1f has to be greater than 0", fuelCapacityGallons));
+            throw new IllegalArgumentException(
+                    String.format("fuel capacity %.1f has to be greater than 0", fuelCapacityGallons));
         }
         this.mpg = mpg;
         this.fuelCapacity = fuelCapacityGallons;
@@ -55,7 +57,9 @@ public abstract class GasPoweredCar extends Car {
             throw new IllegalArgumentException(String.format("Miles %.1f must be at least 0. ", miles));
         }
         if (!canDrive(miles)) {
-            throw new IllegalArgumentException(String.format("Cannot drive %.1f miles, max you can drive with your " + "fuel is %.1f miles", miles, getRemainingRange()));
+            throw new IllegalArgumentException(
+                    String.format("Cannot drive %.1f miles, max you can drive with your " + "fuel is %.1f miles", miles,
+                            getRemainingRange()));
         }
         addMileage(miles);
         decreaseFuelLevel(miles);
@@ -109,7 +113,10 @@ public abstract class GasPoweredCar extends Car {
     public void refillTank(double gallons) {
         // adding 0.1 as a delta
         if (this.fuelLevel + gallons > this.fuelCapacity + 0.1) {
-            throw new IllegalArgumentException(String.format("Adding %.1f gallons to the tank while it's fuel level " + "is %.1f gallons would cause it to overflow (%.1f > %.1f)", gallons, getFuelLevel(), (gallons + getFuelCapacity()), getFuelCapacity()));
+            throw new IllegalArgumentException(String.format(
+                    "Adding %.1f gallons to the tank while it's fuel level "
+                            + "is %.1f gallons would cause it to overflow (%.1f > %.1f)",
+                    gallons, getFuelLevel(), (gallons + getFuelCapacity()), getFuelCapacity()));
         } else if (gallons < 0) {
             throw new IllegalArgumentException(String.format("Gallons %.1f must be a positive value.", gallons));
         }
@@ -124,7 +131,10 @@ public abstract class GasPoweredCar extends Car {
         if (miles < 0) {
             throw new IllegalArgumentException(String.format("miles %.1f must be at least 0.", miles));
         } else if (miles / mpg > fuelLevel) {
-            throw new IllegalArgumentException(String.format("decreasing fuel level by %.1f miles (%.1f gallons) " + "would cause you to have a negative number of gallons in the tank", miles, (miles / mpg)));
+            throw new IllegalArgumentException(String.format(
+                    "decreasing fuel level by %.1f miles (%.1f gallons) "
+                            + "would cause you to have a negative number of gallons in the tank",
+                    miles, (miles / mpg)));
         }
         fuelLevel -= (miles / mpg);
     }

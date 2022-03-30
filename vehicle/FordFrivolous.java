@@ -33,7 +33,9 @@ public class FordFrivolous extends GasPoweredCar implements SelfDriving, Flying 
             throw new IllegalArgumentException(String.format("Miles %.1f must be at least 0. ", miles));
         }
         if (!canFly(miles)) {
-            throw new IllegalArgumentException(String.format("Cannot fly %.1f miles, max you can fly with your fuel " + "is %.1f miles", miles, (getFuelLevel() * (getMPG() / 3))));
+            throw new IllegalArgumentException(
+                    String.format("Cannot fly %.1f miles, max you can fly with your fuel " + "is %.1f miles", miles,
+                            (getFuelLevel() * (getMPG() / 3))));
         }
         decreaseFuelLevel((miles * 3));
     }

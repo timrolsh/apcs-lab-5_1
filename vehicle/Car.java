@@ -14,7 +14,8 @@ public abstract class Car {
      */
     protected Car(String make, String model, double startingMileage) {
         if (startingMileage < 0) {
-            throw new IllegalArgumentException(String.format("Starting mileage %.1f must be at least 0.", startingMileage));
+            throw new IllegalArgumentException(
+                    String.format("Starting mileage %.1f must be at least 0.", startingMileage));
         }
         this.make = make;
         this.model = model;
@@ -117,7 +118,8 @@ public abstract class Car {
         // check for no negative distances
         for (int i = 0; i < milesEachDay.size(); i++) {
             if (milesEachDay.get(i) < 0) {
-                throw new IllegalArgumentException(String.format("Mile at index %d(%.1f) must be at least 0. ", i, milesEachDay.get(i)));
+                throw new IllegalArgumentException(
+                        String.format("Mile at index %d(%.1f) must be at least 0. ", i, milesEachDay.get(i)));
             }
         }
         int i = 0;
